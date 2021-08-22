@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{base :: head}"></head>
+
+<body>
+	<div id="cadastro-dispensa" class="container">
+
+		<div th:replace="base :: cabecalho"></div>
+
+		<div id="conteudo" class="container">
+
+			<form>
+				<fieldset>
+					<legend>Cadastro de <strong>dispensa</strong></legend>
+					<div class="mb-3 form-group">
+						<label for="nome" class="form-label">Nome da dispensa: </label>
+						<input type="text" class="form-control" id="nome" aria-describedby="nomeHelp">
+
+					</div>
+
+					<div class="mb-3 form-group">
+						<label for="itens" class="form-label">Adicionar item: </label>
+						<input type="text" class="form-control" id="itens">
+
+					</div>
+
+					<div class="form-text">Verifique antes de
+						salvar.</div>
+					<button type="submit" class="btn btn-primary">Salvar dispensa</button>
+					<a href="/dispensa/form-nova"><button type="button" class="btn btn-primary">Nova
+							dispensa</button></a>
+					<a href="/menu-cadastro"><button type="button" class="btn btn-secondary">Voltar</button></a>
+				</fieldset>
+			</form>
+
+		</div>
+	</div>
+
+	<div th:replace="~{base :: rodape}"> </div>
+
+</body>
+
+</html>
