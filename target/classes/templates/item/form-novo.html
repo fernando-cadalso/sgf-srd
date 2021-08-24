@@ -10,59 +10,65 @@
 
 		<div th:replace="base :: cabecalho"></div>
 
-		<div id="conteudo" class="container">
+		<div id="conteudo" class="card">
 
 			<form th:object="${gravarItem}" method="POST" action="/item/gravar">
 				<fieldset>
-					<legend>Cadastro de <strong>item</strong></legend>
-					<div class="mb-3 form-group">
-						<label for="nome" class="form-label">* Nome do item: </label>
-						<input th:field="*{nome}" type="text" class="form-control" th:errorclass="is-invalid" id="nome">
-						<div class="invalid-feedback" th:errors="*{nome}"></div>
+					<legend class="card-header">Cadastro de <strong>item</strong></legend>
 
+					<div class="card-body">
+						<div class="mb-3 form-group">
+							<label for="nome" class="form-label">* Nome do item: </label>
+							<input th:field="*{nome}" type="text" class="form-control" th:errorclass="is-invalid"
+								id="nome">
+							<div class="invalid-feedback" th:errors="*{nome}"></div>
+
+						</div>
+
+						<div class="mb-3 form-group">
+							<label for="descricao" class="form-label">Descrição: </label>
+							<input type="text" class="form-control" id="descricao" aria-describedby="descricaoHelp">
+
+						</div>
+
+						<div class="mb-3 form-group">
+							<label for="quantidade" class="form-label">Quantidade: </label>
+							<input type="text" class="form-control" id="quantidade" aria-describedby="quantidadeHelp">
+
+						</div>
+
+						<div class="mb-3 form-group">
+							<label for="preco" class="form-label">Preço: </label>
+							<input type="text" class="form-control" id="preco" aria-describedby="precoHelp">
+
+						</div>
+
+						<div class="mb-3 form-group">
+							<label for="mercado" class="form-label">Mercado: </label>
+							<input type="text" class="form-control" id="mercado" aria-describedby="mercadoHelp">
+
+						</div>
+
+						<div class="mb-3 form-group">
+							<label for="dispensa" class="form-label">* Dispensa: </label>
+							<input th:field="*{dispensa}" type="text" class="form-control" th:errorclass="is-invalid"
+								id="dispensa">
+							<div class="invalid-feedback" th:errors="*{dispensa}"></div>
+
+						</div>
+
+						<div class="mb-3 form-group">
+							<label for="lista" class="form-label">* Lista modelo: </label>
+							<input th:field="*{lista}" type="text" class="form-control" th:errorclass="is-invalid"
+								id="lista">
+							<div class="invalid-feedback" th:errors="*{lista}"></div>
+						</div>
+
+						<div class="form-text">Verifique antes de salvar.</div>
+						<button type="submit" class="btn btn-primary">Salvar item</button>
+						<a href="/item/form-novo"><button type="button" class="btn btn-primary">Novo item</button></a>
+						<a href="/#collapseCadastros"><button type="button" class="btn btn-secondary">Voltar</button></a>
 					</div>
-
-					<div class="mb-3 form-group">
-						<label for="descricao" class="form-label">Descrição: </label>
-						<input type="text" class="form-control" id="descricao" aria-describedby="descricaoHelp">
-
-					</div>
-
-					<div class="mb-3 form-group">
-						<label for="quantidade" class="form-label">Quantidade: </label>
-						<input type="text" class="form-control" id="quantidade" aria-describedby="quantidadeHelp">
-
-					</div>
-
-					<div class="mb-3 form-group">
-						<label for="preco" class="form-label">Preço: </label>
-						<input type="text" class="form-control" id="preco" aria-describedby="precoHelp">
-
-					</div>
-
-					<div class="mb-3 form-group">
-						<label for="mercado" class="form-label">Mercado: </label>
-						<input type="text" class="form-control" id="mercado" aria-describedby="mercadoHelp">
-
-					</div>
-
-					<div class="mb-3 form-group">
-						<label for="dispensa" class="form-label">* Dispensa: </label>
-						<input th:field="*{dispensa}" type="text" class="form-control" th:errorclass="is-invalid" id="dispensa">
-						<div class="invalid-feedback" th:errors="*{dispensa}"></div>
-
-					</div>
-
-					<div class="mb-3 form-group">
-						<label for="lista" class="form-label">* Lista modelo: </label>
-						<input th:field="*{lista}" type="text" class="form-control" th:errorclass="is-invalid" id="lista">
-						<div class="invalid-feedback" th:errors="*{lista}"></div>
-					</div>
-					
-					<div class="form-text">Verifique antes de salvar.</div>
-					<button type="submit" class="btn btn-primary">Salvar item</button>
-					<a href="/item/form-novo"><button type="button" class="btn btn-primary">Novo item</button></a>
-					<a href="/menu-cadastro"><button type="button" class="btn btn-secondary">Voltar</button></a>
 				</fieldset>
 			</form>
 

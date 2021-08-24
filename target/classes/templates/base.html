@@ -7,18 +7,19 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 	<!-- Compressed CSS -->
-	<!--<link href="/foundation/css/foundation.css" rel="stylesheet" />-->
 	<link href="/bootstrap-v5.1/css/bootstrap.min.css" rel="stylesheet" />
 
 	<title>GSF-Sist. Repo. Dispensas</title>
 </head>
 
-<body style="background-color: beige;">
+<body style="background-color: beige;" no-scroll>
+
 	<div class="container">
 		<div th:fragment="menu-superior" id="menu-superior">
 
 			<div th:fragment="cabecalho" class="card" style="margin-bottom: 10px;">
-				<div class="card-header"><a class="h2" style="text-decoration: none;" href="/">GSF-Sistema de Reposição de Dispensas</a></div>
+				<div class="card-header"><a class="h2" style="text-decoration: none;" href="/">GSF-Sistema de Reposição
+						de Dispensas</a></div>
 
 				<div class="card-body">
 					<span class="badge bg-primary" style="margin-bottom: 30px;">Front-end com Bootstrap</span>
@@ -27,17 +28,46 @@
 			</div>
 			<div class="accordion" id="menu-superior-acordeao">
 				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingOne">
+					<h2 class="accordion-header" id="headingCompras">
 						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-							data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							data-bs-target="#collapseCompras" aria-expanded="true" aria-controls="collapseCompras">
 							Menu de compras
 						</button>
 					</h2>
-					<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+					<div id="collapseCompras" class="accordion-collapse collapse" aria-labelledby="headingCompras"
 						data-bs-parent="#menu-superior-acordeao">
 						<div class="accordion-body">
 
-							<a class="dropdown-item" href="/menu-cadastro">Cadastros</a>
+							<div class="accordion" id="accordionCadastros">
+								<div class="accordion-item">
+									<h2 class="accordion-header" id="headingCadastros">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+											data-bs-target="#collapseCadastros" aria-expanded="true"
+											aria-controls="collapseCadastros">
+											Cadastros
+										</button>
+									</h2>
+									<div id="collapseCadastros" class="accordion-collapse collapse"
+										aria-labelledby="headingCadastros" data-bs-parent="#accordionCadastros">
+										<div class="accordion-body collapsed">
+
+
+											<div class="list-group">
+												<a href="/item/form-novo"
+													class="list-group-item list-group-item-action"> Item de consumo </a>
+												<a href="/dispensa/form-nova"
+													class="list-group-item list-group-item-action">Dispensa</a>
+												<a href="/item/form-nova"
+													class="list-group-item list-group-item-action">Nova lista</a>
+											</div>
+
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<a class="dropdown-item" href="#">Consultar</a>
 							<a class="dropdown-item" href="#">Nova Compra</a>
 							<a class="dropdown-item" href="#">Sair</a>
@@ -53,16 +83,15 @@
 
 	<div th:fragment="conteudo" id="conteudo"></div>
 
-	<div th:fragment="rodape" id="rodape" class="container" style="margin-top: 70px;">
-		<p class="h5">Gerenciamento do Serviço de Finanças
-		Família Meireles Cadalso
-		</p>
+	<div th:fragment="rodape" id="rodape" class="container" style="margin-top: 30px;">
+		<span class="h6">Gerenciamento do Serviço de Finanças
+			Família Meireles Cadalso
+		</span>
 	</div>
 
 	<script src="/popper/popper.min.js"></script>
 	<script src="/jquery-3.6/jquery-3.6.0.min.js"></script>
 	<script src="/bootstrap-v5.1/js/bootstrap.min.js"></script>
-	<script src="/foundation/js/foundation.js"></script>
 </body>
 
 </html>
