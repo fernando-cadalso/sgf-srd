@@ -1,11 +1,9 @@
 package local.fmc.gsf.srd.infra;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import local.fmc.gsf.srd.dominio.ListaModelo;
 
-public interface ListaModeloRepo extends CrudRepository<ListaModelo, Integer>{
+public interface ListaModeloRepo extends JpaRepository<ListaModelo, Integer>{
 	
-	ListaModelo findByNomeLike(String nome);
-
 }

@@ -1,27 +1,29 @@
 package local.fmc.gsf.srd.dominio;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import local.fmc.gsf.srd.infra.DispensaRepo;
-import local.fmc.gsf.srd.infra.ItemDeConsumoRepo;
 import local.fmc.gsf.srd.infra.ListaModeloRepo;
 
 public class ItemBuilder {
 
-	@Autowired
 	private DispensaRepo dispensaRepo;
-
-	@Autowired
-	private ListaModeloRepo ListaModeloRepo;
+	private ListaModeloRepo listaModeloRepo;
+	
 	private ItemDeConsumo item;
 
-	public ItemDeConsumo novoItemObrigatorio(String nome, String dispensa, String lista) {
+	
+	public ItemBuilder(DispensaRepo dispensaRepo, ListaModeloRepo listaModeloRepo) {
+		this.dispensaRepo = dispensaRepo;
+		this.listaModeloRepo = listaModeloRepo;
+	}
 
-		ListaModelo listaModelo = ListaModeloRepo.findByNomeLike(lista);
+
+	public ItemDeConsumo novoItemObrigatorio(String nome, Integer dispensaId, Integer listaId) {
+
+		ListaModelo listaModelo = listaModeloRepo.getById(listaId);
 		if (listaModelo == null) {
 			throw new NullPointerException("Lista modelo informada não localizada.");
 		}
-		Dispensa nomeDispensa = dispensaRepo.findByNomeLike(dispensa);
+		Dispensa nomeDispensa = dispensaRepo.getById(dispensaId);
 		if (nomeDispensa == null) {
 			throw new NullPointerException("Dispensa informada não localizada.");
 		}

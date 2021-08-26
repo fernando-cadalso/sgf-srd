@@ -12,10 +12,11 @@ import javax.persistence.OneToMany;
 @Entity
 public class ListaModelo {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "lista")
 	private List<ItemDeConsumo> itens;
 
@@ -32,6 +33,10 @@ public class ListaModelo {
 	}
 
 	public void setNome(String nome) {
-this.nome = nome;	
+		this.nome = nome;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 }

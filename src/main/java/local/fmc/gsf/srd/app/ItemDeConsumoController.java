@@ -6,14 +6,17 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import local.fmc.gsf.srd.dominio.Dispensa;
 import local.fmc.gsf.srd.dominio.ItemDeConsumo;
 import local.fmc.gsf.srd.dominio.ListaModelo;
+import local.fmc.gsf.srd.infra.DispensaRepo;
 import local.fmc.gsf.srd.infra.ItemDeConsumoRepo;
 import local.fmc.gsf.srd.infra.ListaModeloRepo;
 
@@ -26,6 +29,9 @@ public class ItemDeConsumoController {
 	
 	@Autowired
 	private ListaModeloRepo listaModeloRepo;
+	
+	@Autowired
+	private DispensaRepo dispensaRepo;
 
 	@GetMapping("/form-nova")
 	public String novaLista(GravarLista requisicao) {
@@ -33,7 +39,14 @@ public class ItemDeConsumoController {
 	}
 	
 	@GetMapping("/form-novo")
-	public String novoItem(GravarItem requisicao) {
+	public String novoItem(GravarItem requisicao, Model listaDeDispensas, Model listaModelo) {
+	
+		Iterable<Dispensa> dispensas = dispensaRepo.findAll();
+		listaDeDispensas.addAttribute("listaDeDispensas", dispensas);
+		
+		
+		Iterable<ListaModelo> listasModelo = listaModeloRepo.findAll();
+		listaModelo.addAttribute("listasModelo", listasModelo);
 		return "item/form-novo";
 	}
 	
@@ -48,11 +61,11 @@ public class ItemDeConsumoController {
 			return "item/form-novo";
 		}
 		
-		ItemDeConsumo novoItem = requisicao.toItemDeConsumo();
+		ItemDeConsumo novoItem = requisicao.toItemDeConsumo(dispensaRepo, listaModeloRepo);
 		itemRepo.save(novoItem);
 
 		
-		return "redirect:/item/form-novo";
+		return "item/form-novo";
 	}
 	
 	@PostMapping("/gravar-lista")

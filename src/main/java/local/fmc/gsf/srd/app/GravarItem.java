@@ -1,28 +1,35 @@
 package local.fmc.gsf.srd.app;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import local.fmc.gsf.srd.dominio.ItemBuilder;
 import local.fmc.gsf.srd.dominio.ItemDeConsumo;
-
+import local.fmc.gsf.srd.infra.DispensaRepo;
+import local.fmc.gsf.srd.infra.ListaModeloRepo;
 
 public class GravarItem {
-	
-	@NotBlank(message = "Informe o nome do item.")
+
+	@NotNull
+	@Length(min = 2)
+	@NotBlank(message = "Nome deve ter 2 caracteres, no mínimo.")
 	private String nome;
 	private String quantidade;
 	private String preco;
 	private String descricao;
 	private String mercado;
-	
+
 	@NotBlank(message = "Selecione uma dispensa.")
-	private String dispensa;
-	
+	private String dispensaId;
+
 	@NotBlank(message = "Selecione uma lista.")
-	private String lista;
-	
-	public ItemDeConsumo toItemDeConsumo() {
-		ItemDeConsumo novoItem = new ItemBuilder().novoItemObrigatorio(nome, dispensa, lista);
+	private String listaId;
+
+	public ItemDeConsumo toItemDeConsumo(DispensaRepo dispensaRepo, ListaModeloRepo listaModeloRepo) {
+		ItemDeConsumo novoItem = new ItemBuilder(dispensaRepo, listaModeloRepo).novoItemObrigatorio(nome, 
+				Integer.valueOf(this.dispensaId), Integer.valueOf(this.listaId));
 		return novoItem;
 	}
 
@@ -46,12 +53,12 @@ public class GravarItem {
 		return mercado;
 	}
 
-	public String getDispensa() {
-		return dispensa;
+	public String getDispensaId() {
+		return dispensaId;
 	}
 
-	public String getLista() {
-		return lista;
+	public String getListaId() {
+		return listaId;
 	}
 
 	public void setNome(String nome) {
@@ -74,15 +81,12 @@ public class GravarItem {
 		this.mercado = mercado;
 	}
 
-	public void setDispensa(String dispensa) {
-		this.dispensa = dispensa;
+	public void setDispensaId(String dispensa) {
+		this.dispensaId = dispensa;
 	}
 
-	public void setLista(String lista) {
-		this.lista = lista;
+	public void setListaId(String lista) {
+		this.listaId = lista;
 	}
-	
-	
 
-	
 }

@@ -63,4 +63,14 @@ public class ItemDeConsumo extends ItemDaCasa {
 	public void setMercado(String mercado) {
 		this.mercado = mercado;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	
 }

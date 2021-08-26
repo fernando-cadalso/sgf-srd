@@ -1,12 +1,11 @@
 package local.fmc.gsf.srd.infra;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import local.fmc.gsf.srd.dominio.Dispensa;
 
 @Repository
-public interface DispensaRepo extends CrudRepository<Dispensa, Integer>{
+public interface DispensaRepo extends JpaRepository<Dispensa, Integer>{
 
-	Dispensa findByNomeLike(String nome);
 }

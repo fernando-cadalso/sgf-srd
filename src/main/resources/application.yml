@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: ''
+    url: jdbc:mysql://localhost:3306/gsf_srd
+    username: fernando
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
