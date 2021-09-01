@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -6,8 +6,9 @@
 <title>GSF-SRD</title>
 
 <body>
-	<div th:replace="base :: menu-superior"></div>
-
+	<div class="container">
+		<div th:replace="base :: menu-superior"></div>
+	</div>
 
 	<div th:fragment="conteudo" id="conteudo">
 		<div class="container">
@@ -26,7 +27,7 @@
 		</div>
 	</div>
 
-	<div th:fragment="rodape" id="rodape"></div>
+	<div th:replace="~{base :: rodape}" id="rodape"></div>
 </body>
 
 </html>

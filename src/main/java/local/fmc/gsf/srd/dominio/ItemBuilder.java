@@ -1,8 +1,12 @@
 package local.fmc.gsf.srd.dominio;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import local.fmc.gsf.srd.infra.DispensaRepo;
 import local.fmc.gsf.srd.infra.ListaModeloRepo;
 
+@Service
 public class ItemBuilder {
 
 	private DispensaRepo dispensaRepo;
@@ -10,13 +14,15 @@ public class ItemBuilder {
 	
 	private ItemDeConsumo item;
 
-	
+//	public ItemBuilder(DispensaRepo dispensaRepo) {
+//		this.dispensaRepo = dispensaRepo;
+//	}
 	public ItemBuilder(DispensaRepo dispensaRepo, ListaModeloRepo listaModeloRepo) {
 		this.dispensaRepo = dispensaRepo;
 		this.listaModeloRepo = listaModeloRepo;
 	}
 
-
+	
 	public ItemDeConsumo novoItemObrigatorio(String nome, Integer dispensaId, Integer listaId) {
 
 		ListaModelo listaModelo = listaModeloRepo.getById(listaId);

@@ -26,7 +26,19 @@ public class GravarItem {
 
 	@NotBlank(message = "Selecione uma lista.")
 	private String listaId;
+	
+	private ItemBuilder itemBuilder;
+	
+	public GravarItem(ItemBuilder itemBuilder) {
+		this.itemBuilder = itemBuilder;
+	}
 
+//	public ItemDeConsumo toItemDeConsumo(DispensaRepo dispensaRepo) {
+//		ItemDeConsumo novoItem = itemBuilder.novoItemObrigatorio(nome, 
+//				Integer.valueOf(this.dispensaId), Integer.valueOf(this.listaId));
+//		return novoItem;
+//	}
+	
 	public ItemDeConsumo toItemDeConsumo(DispensaRepo dispensaRepo, ListaModeloRepo listaModeloRepo) {
 		ItemDeConsumo novoItem = new ItemBuilder(dispensaRepo, listaModeloRepo).novoItemObrigatorio(nome, 
 				Integer.valueOf(this.dispensaId), Integer.valueOf(this.listaId));
