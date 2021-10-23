@@ -1,6 +1,6 @@
 spring:
   datasource:
-    password: ''
+    password: '@#H0m3369'
     url: jdbc:mysql://localhost:3306/gsf_srd
     username: fernando
   jpa:
